@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="Default Web Site/PencilStore" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\dtravin\\documents\\visual\ studio\ 2015\\Projects\\PencilStore\\PencilStore\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\dtravin\\documents\\visual\ studio\ 2015\\Projects\\PencilStore\\PencilStore\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="StoreContext-Web.config Connection String" description="" value="Data Source=DESKTOP-GFKHHRL\SQLEXPRESS;Initial Catalog=PencilsStore;Integrated Security=SSPI;" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\dtravin\\documents\\visual\ studio\ 2015\\Projects\\PencilStore\\PencilStore\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='StoreContext']/@connectionString" />
+  </parameter>
+</parameters>

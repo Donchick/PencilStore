@@ -11,12 +11,14 @@ namespace PencilStore.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PencilId { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
-        public string Descritpion { get; set; }
+        public string Description { get; set; }
 
-        public byte Image { get; set; }
+        public string Image { get; set; }
 
+        [Required]
         public decimal Price { get; set; }
 
         [Column("Buyers")]

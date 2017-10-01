@@ -2,26 +2,13 @@
 using System.Web.Http;
 using PencilStore.Models;
 using PencilStore.Entities;
+using System.Web.Http.Cors;
 
 namespace PencilStore.Controllers
 {
-    delegate Pencil BuildPencil(PencilEntity pencilEntity);
-
+    [EnableCors(origins:"*", headers:"*", methods:"*")]
     public class PencilsController: ApiController
     {
-        private static Pencil BuildPencil(PencilEntity pencilEntity)
-        {
-            return new Pencil
-            {
-                PencilId = pencilEntity.PencilId,
-                Price = pencilEntity.Price,
-                Descritpion = pencilEntity.Descritpion,
-                Image = pencilEntity.Image,
-                Name = pencilEntity.Name,
-                BuyersIds = pencilEntity.Buyers.Select(buyer => buyer.BuyerId)
-            };
-        }
-
         private StoreContext db = new StoreContext();
 
         [HttpGet]
@@ -31,9 +18,9 @@ namespace PencilStore.Controllers
             {
                 PencilId = pencil.PencilId,
                 Price = pencil.Price,
-                Descritpion = pencil.Descritpion,
                 Image = pencil.Image,
                 Name = pencil.Name,
+                Description = pencil.Description,
                 BuyersIds = pencil.Buyers.Select(buyer => buyer.BuyerId)
             });
 
@@ -48,7 +35,7 @@ namespace PencilStore.Controllers
             {
                 PencilId = DbPencil.PencilId,
                 Price = DbPencil.Price,
-                Descritpion = DbPencil.Descritpion,
+                Description = DbPencil.Description,
                 Image = DbPencil.Image,
                 Name = DbPencil.Name,
                 BuyersIds = DbPencil.Buyers.Select(buyer => buyer.BuyerId)
@@ -63,7 +50,7 @@ namespace PencilStore.Controllers
             PencilEntity pencilEntity = new PencilEntity()
             {
                 Price = pencil.Price,
-                Descritpion = pencil.Descritpion,
+                Description = pencil.Description,
                 Image = pencil.Image,
                 Name = pencil.Name,
                 Buyers = db.Buyers.Where(b => pencil.BuyersIds.Contains(b.BuyerId)).ToList()
@@ -71,6 +58,16 @@ namespace PencilStore.Controllers
 
             db.Pencils.Add(pencilEntity);
             db.SaveChanges();
+
+            pencil = new Pencil
+            {
+                PencilId = pencilEntity.PencilId,
+                Price = pencilEntity.Price,
+                Description = pencilEntity.Description,
+                Image = pencilEntity.Image,
+                Name = pencilEntity.Name,
+                BuyersIds = pencilEntity.Buyers.Select(buyer => buyer.BuyerId)
+            };
 
             return Ok(pencil);
         }
@@ -80,7 +77,7 @@ namespace PencilStore.Controllers
         {
             PencilEntity dbPencil = db.Pencils.Where(p => p.PencilId == pencil.PencilId).FirstOrDefault();
             dbPencil.Price = pencil.Price;
-            dbPencil.Descritpion = pencil.Descritpion;
+            dbPencil.Description = pencil.Description;
             dbPencil.Image = pencil.Image;
             dbPencil.Name = pencil.Name;
 
@@ -90,6 +87,16 @@ namespace PencilStore.Controllers
             removedBuyers.ForEach(rb => dbPencil.Buyers.Remove(rb));
             addedBuyers.ForEach(ab => dbPencil.Buyers.Add(ab));
             db.SaveChanges();
+
+            pencil = new Pencil
+            {
+                PencilId = dbPencil.PencilId,
+                Price = dbPencil.Price,
+                Description = dbPencil.Description,
+                Image = dbPencil.Image,
+                Name = dbPencil.Name,
+                BuyersIds = dbPencil.Buyers.Select(buyer => buyer.BuyerId)
+            };
 
             return Ok(pencil);
         }
@@ -101,7 +108,7 @@ namespace PencilStore.Controllers
             db.Pencils.Remove(dbPencil);
             db.SaveChanges();
 
-            return Ok();
+            return Ok(dbPencil);
         }
     }
 }

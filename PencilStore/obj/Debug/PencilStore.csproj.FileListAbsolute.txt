@@ -42,4 +42,6 @@ C:\Users\dtravin\Documents\Visual Studio 2015\Projects\PencilStore\PencilStore\b
 C:\Users\dtravin\Documents\Visual Studio 2015\Projects\PencilStore\PencilStore\bin\System.Web.Http.WebHost.xml
 C:\Users\dtravin\Documents\Visual Studio 2015\Projects\PencilStore\PencilStore\obj\Debug\PencilStore.dll
 C:\Users\dtravin\Documents\Visual Studio 2015\Projects\PencilStore\PencilStore\obj\Debug\PencilStore.pdb
-C:\Users\dtravin\documents\visual studio 2015\Projects\PencilStore\PencilStore\obj\Debug\PencilStore.csprojResolveAssemblyReference.cache
+C:\Users\dtravin\documents\visual studio 2015\Projects\PencilStore\PencilStore\bin\System.Web.Cors.dll
+C:\Users\dtravin\documents\visual studio 2015\Projects\PencilStore\PencilStore\bin\System.Web.Http.Cors.dll
+C:\Users\dtravin\documents\visual studio 2015\Projects\PencilStore\PencilStore\bin\System.Web.Http.Cors.xml

@@ -11,6 +11,7 @@ namespace PencilStore.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int BuyerId { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
         [Column("Pencils")]
