@@ -9,7 +9,7 @@ using PencilStore.Models;
 
 namespace PencilStore.Controllers
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [EnableCors(origins: "*", headers: "*", methods: "GET")]
     public class BuyersController : ApiController
     {
         private StoreContext db = new StoreContext();
